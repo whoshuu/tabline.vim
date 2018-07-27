@@ -26,9 +26,10 @@ function! Tabline()
     let bufmodified = getbufvar(bufnr, "&mod")
 
     let s .= '%' . tab . 'T'
-    let s .= (tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
-    let s .= ' ' . tab .':'
-    let s .= (bufname != '' ? '['. fnamemodify(bufname, ':t') . '] ' : '[No Name] ')
+    let s .= (tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLineFill#')
+    "let s .= ' ' . tab .':'
+    "let s .= (bufname != '' ? '['. fnamemodify(bufname, ':t') . '] ' : '[No Name] ')
+    let s .= (bufname != '' ? fnamemodify(bufname, ':t') . ' ' : '[No Name] ')
 
     if bufmodified
       let s .= '[+] '
